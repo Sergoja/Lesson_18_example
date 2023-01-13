@@ -5,8 +5,15 @@ class MovieService:
     def get_one(self, uid):
         return self.dao.get_one(uid)
 
-    def get_all(self):
-        return self.dao.get_all()
+    def get_all(self, director, genre, year):
+        if director is not None:
+            return self.dao.get_by_director(director)
+        elif genre is not None:
+            return self.dao.get_by_genre(genre)
+        elif year is not None:
+            return self.dao.get_by_year(year)
+        else:
+            return self.dao.get_all()
 
     def create(self, data):
         return self.dao.create(data)

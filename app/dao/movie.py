@@ -31,3 +31,11 @@ class MovieDAO:
         self.session.delete(movie)
         self.session.commit()
 
+    def get_by_director(self, uid):
+        return self.session.query(Movie).filter(Movie.director_id == uid).all()
+
+    def get_by_genre(self, uid):
+        return self.session.query(Movie).filter(Movie.genre_id == uid).all()
+
+    def get_by_year(self, year):
+        return self.session.query(Movie).filter(Movie.year == year).all()
